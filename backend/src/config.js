@@ -9,9 +9,9 @@ const app = express()
 app.use(morgan("common"))
 app.use(helmet())
 app.use(cors({
-    origin: ["http://localhost"],
+    origin: ["http://localhost:4200/"],
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type"]
 }))
 app.use(compression())
 app.use(bodyParser.json())

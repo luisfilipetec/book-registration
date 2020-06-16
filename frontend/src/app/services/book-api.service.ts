@@ -1,4 +1,3 @@
-import { Book } from './../models/book.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -11,7 +10,7 @@ export class BookApiService {
   constructor(private http: HttpClient) { }
 
   public getBooks(): Observable <any>{
-    return this.http.get(`http://localhost:3000/books`);
+    return this.http.get('/api/books');
   }
 
 }

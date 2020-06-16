@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookApiService } from 'src/app/services/book-api.service';
 
 @Component({
   selector: 'app-books',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksComponent implements OnInit {
 
-  constructor() { }
+  books: any;
+  error: any;
+  constructor(private bookAPIService: BookApiService) {
+    this.getBookFromAPI();
+   }
 
   ngOnInit(): void {
   }
 
+  getBookFromAPI() {
+    this.bookAPIService.getBooks().subscribe(
+      (data: any) => {
+        this.books = data;
+      }, error => {
+        this.error = error;
+        console.error('Erro', error);
+      });
+  }
 }
